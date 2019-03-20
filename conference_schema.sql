@@ -9,6 +9,8 @@ CREATE TABLE Sessions(
 	session_end_time TIME NOT NULL,
 	room VARCHAR(100) NOT NULL,
 	conference_name VARCHAR(100) NOT NULL,
+	speaker_first_name VARCHAR(100) NOT NULL,
+	speaker_last_name VARCHAR(100) NOT NULL,
 	PRIMARY KEY(
 		session_name),
 	FOREIGN KEY(
@@ -18,9 +20,9 @@ CREATE TABLE Sessions(
 		)ON DELETE CASCADE
 );
 
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name) VALUE('Maths', '2019-03-01','10:00:00', '11:00:00', 102, 'QUU Conference');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name) VALUE('Physics', '2019-03-01'. '12:00:00', '13:00:00', 102, 'QUU Conference');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name) VALUE('Computer Science', '2019-03-02', '14:00:00', '15:00:00', 102, 'QUU Conference');
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Maths', '2019-03-01','10:00:00', '11:00:00', 102, 'QUU Conference', 'Shini', 'Ko');
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Physics', '2019-03-01'. '12:00:00', '13:00:00', 102, 'QUU Conference', 'Yuankang', 'Zhang');
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Computer Science', '2019-03-02', '14:00:00', '15:00:00', 102, 'QUU Conference', 'Mark', 'Zuckerberg');
 
 CREATE TABLE Sponsor_company(
 	company_name VARCHAR(50) NOT NULL,
@@ -53,7 +55,11 @@ CREATE TABLE Attendee(
 		company_name
 	) REFERENCES Sponsor_company(
 		company_name
-	) 
+	),
+	FOREIGN KEY(
+		speak_at
+	) REFERENCES Sessions(
+		session_name)
 );
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone) VALUE(2001, 'Eric', 'Chu', 'student', '$50', 'eric.chu@queensu.ca', '6137702515');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone) VALUE(2002, 'Kobe', 'James', 'student', '$50', 'kobe.james@queensu.ca', '6137702001');
@@ -61,6 +67,8 @@ INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, atten
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 'FREE', 'steves.j@apple.com', 'Apple Inc');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1001, 'Shini', 'Ko',  'shini.ko@queensu.com', 'Maths');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang',  'yuankang.zhang@queensu.com', 'Physics');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1002, 'Mark', 'Zuckerberg',  'm.z@facebool.com', 'Computer Science');
+
  
 CREATE TABLE Rooms(
 	room_id VARCHAR(50) NOT NULL,
@@ -122,6 +130,23 @@ committee_name VARCHAR(100) NOT NULL PRIMARY KEY
 
 INSERT INTO Conference(committee_name) VALUE('QUU Committee');
 
+CREATE TABLE Sub_committee(
+	sub_committee_name VARCHAR(100) NOT NULL,
+	committee_name VARCHAR(100) NOT NULL,
+	PRIMARY KEY(
+		sub_committee_name
+	),
+	FOREIGN KEY(
+		committee_name,
+	) REFERENCES Committee(
+		committee_name,
+	) ON DELETE CASCADE
+);
+
+INSERT INTO Sub_committe(sub_committee_name, committee_name) VALUE(‘Program Committee’, ‘QUU Committee’);
+INSERT INTO Sub_committe(sub_committee_name, committee_name) VALUE(‘Registration Committee’, ‘QUU Committee’);
+INSERT INTO Sub_committe(sub_committee_name, committee_name) VALUE(‘Sponsorship Committee’, ‘QUU Committee’);
+
 CREATE TABLE Member(
 	member_id INTEGER NOT NULL,
 	member_first_name VARCHAR(50) NOT NULL,
@@ -136,6 +161,11 @@ CREATE TABLE Member(
       conference_name
 	)REFERENCES Conference(
       conference_name
+	)ON DELETE CASCADE,
+	FOREIGN KEY(
+      chair_of
+	)REFERENCES Sub_committee(
+      sub_committee_name
 	)ON DELETE CASCADE
 );
 
@@ -143,7 +173,7 @@ INSERT INTO Member(member_id, member_first_name, member_last_name, conference_na
 INSERT INTO Member(member_id, member_first_name, member_last_name, conference_name, chair_of) VALUE(9998, 'Stephen', 'King', 'QUU Conference', 'Registration Committee');
 INSERT INTO Member(member_id, member_first_name, member_last_name, conference_name, chair_of) VALUE(9997, 'Tim', 'Cook', 'QUU Conference', 'Sponsorship Committee');
 INSERT INTO Member(member_id, member_first_name, member_last_name, conference_name) VALUE(9996, 'Sherry', 'Hollie', 'QUU Conference');
- 
+
 
 CREATE TABLE Sub_committee_members(
 	member_id INTEGER NOT NULL,
