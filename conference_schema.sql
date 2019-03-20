@@ -22,26 +22,6 @@ INSERT INTO Sessions(session_name, session_date, session_start_time, session_end
 INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name) VALUE('Physics', '2019-03-01'. '12:00:00', '13:00:00', 102, 'QUU Conference');
 INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name) VALUE('Computer Science', '2019-03-02', '14:00:00', '15:00:00', 102, 'QUU Conference');
 
-
-CREATE TABLE Speakers(
-	speaker_id INTEGER NOT NULL,
-	speaker_name VARCHAR(50) NOT NULL,
-	session_name VARCHAR(50) NOT NULL,
-	PRIMARY KEY(
-		speaker_name
-	),
-	FOREIGN KEY(
-		session_name
-	)REFERENCES Sessions(
-		session_name
-	) ON DELETE CASCADE
-);
-INSERT INTO Speakers(speaker_id, speaker_name, session_name) 
-VALUE(1001, 'Shini Ko', 'Maths');
-INSERT INTO Speakers(speaker_id, speaker_name, session_name) 
-VALUE(1002, 'Yuankang Zhang', 'Physics');
-
-
 CREATE TABLE Sponsor_company(
 	company_name VARCHAR(50) NOT NULL,
 	grade ENUM('Platinum', 'Gold', 'Silver', 'Bronze') NOT NULL,
@@ -65,6 +45,7 @@ CREATE TABLE Attendee(
 	email VARCHAR(100) NOT NULL,
 	phone VARCHAR(100), 
 	company_name  VARCHAR(100),
+	speak_at VARCHAR(50)
 	PRIMARY KEY(
 		attendee_id
 	),
@@ -78,8 +59,8 @@ INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, atten
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone) VALUE(2002, 'Kobe', 'James', 'student', '$50', 'kobe.james@queensu.ca', '6137702001');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', '$100',  'steve.c@gmail.com');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 'FREE', 'steves.j@apple.com', 'Apple Inc');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email) VALUE(1001, 'Shini', 'Ko',  'shini.ko@queensu.com');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email) VALUE(1002, 'Yuankang', 'Zhang',  'yuankang.zhang@queensu.com');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1001, 'Shini', 'Ko',  'shini.ko@queensu.com', 'Maths');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang',  'yuankang.zhang@queensu.com', 'Physics');
  
 CREATE TABLE Rooms(
 	room_id VARCHAR(50) NOT NULL,
