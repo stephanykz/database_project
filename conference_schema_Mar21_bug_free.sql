@@ -130,7 +130,7 @@ CREATE TABLE Member(
 	member_first_name VARCHAR(50) NOT NULL,
 	member_last_name VARCHAR(50) NOT NULL,
 	conference_name VARCHAR(50) NOT NULL,
-	chair_of VARCHAR(50),
+	chair_of VARCHAR(50)
 	PRIMARY KEY(
       member_id
 	),
