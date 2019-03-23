@@ -71,6 +71,11 @@ CREATE TABLE Attendee(
 		speak_at
 	) REFERENCES Sessions(
 		session_name
+	),
+	FOREIGN KEY(
+		live_in
+	) REFERENCES Rooms(
+		room_id
 	)
 );
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2001, 'Eric', 'Chu', 'student', '$50', 'eric.chu@queensu.ca', '6137702515', '903');
