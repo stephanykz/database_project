@@ -5,7 +5,6 @@
 </head>
 <body>
 <h2>Conference Schedule</h2>
-<section>
 <ul>
 <?php
 
@@ -24,8 +23,6 @@ foreach($sessions as $session){
     }
 
 ?>
-</ul>
-</section>
 
 <span>View the schedule for: </span>
 <form action='particularSession.php' method='post' id="dateform">
