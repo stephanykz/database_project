@@ -23,17 +23,14 @@ while ($session = $sessions->fetch()) {
     }
 
 echo "<p>Or you can choose to view the schedule for a particular date!</p>";
-
 ?>
 
-
-<select name='session_date' form='dateform'>
-	<option value = '0' selected = 'selected'>Select the date</option>
-	<option value = '2019-03-01'>March 1st</option>
-	<option value = '2019-03-02'>March 2nd</option>
-</select>
-
 <form action='particularSession.php' method='post' id="dateform">
+  <select name='session_date' form='dateform'>
+    <option value = '0' selected = 'selected'>Select the date</option>
+    <option value = '2019-03-01'>March 1st</option>
+    <option value = '2019-03-02'>March 2nd</option>
+  </select>
   <input type="submit">
 </form>
 
