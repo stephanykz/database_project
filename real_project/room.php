@@ -29,8 +29,6 @@
         <td><?php echo $student["attendee_last_name"]; ?></td>
         <td><?php echo $student["email"]; ?></td>
     </tr>
-
-
  <?php
     }
 ?>
