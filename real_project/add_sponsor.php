@@ -26,6 +26,7 @@ try {
     $stmt = $pdo->prepare("Insert into Sponsor_company values(:company_name, :grade, :rate, :email_allowance,:email_sent)");
       if ($stmt->execute(array(':company_name' => $company_name, ':grade' => $grade, ':rate' => $rate, ':email_allowance'=> $email_allowance,':email_sent'=>$email_sent))) {
             echo "Added";
+            header('Location: '.$_SERVER['REQUEST_URI']);                    
             } else {
             echo 'Failed';
             }

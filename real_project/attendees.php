@@ -1,6 +1,7 @@
 <?php
 include("nav.php");
 ?>
+<div class="wrapper">
 <h2>Attendees</h2>
 <?php
         $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
@@ -64,19 +65,19 @@ include("nav.php");
 <h3> Add an Attendee </h3>
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 		<label>First Name:</label>
-        <input type="text" name="firstname"><br>
+        <input type="text" name="firstname">
         <label>Last Name:</label>
-        <input type="text" name="lastname"><br>
+        <input type="text" name="lastname">
         <label>Email:</label>
-        <input type="text" name="email"><br>
+        <input type="text" name="email">
         <label>Phone:</label>
-        <input type="text" name="phone"><br>
+        <input type="text" name="phone">
         <label>Type:</label>
 		<select name='type'>
 			<option value = 'student' selected = 'selected'>Student</option>
 			<option value = 'professional'>Professional</option>
 			<option value = 'sponsor'>Sponsor</option>
-        </select><br>
+        </select>
         <label>Select a hotel room for students:</label>
         <select name='room'>
 			<option value = '-1' selected = 'selected'>Select a room</option>
@@ -85,9 +86,9 @@ include("nav.php");
                 echo "<option value = '".$open_room[1]."'>".$open_room[1]."</option>";
             }
             ?>
-        </select><br>
+        </select>
 
-		<input type="submit" name="submit" value="Add">
+		<input class="btn" type="submit" name="submit" value="Add">
 	</form> 
 </div>
 <?php
@@ -95,5 +96,6 @@ if(isset($_POST["submit"])){
 		include("add_attendee.php");
     }
 ?>
+</div>
 </body>
 </html>

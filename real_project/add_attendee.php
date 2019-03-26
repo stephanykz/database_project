@@ -34,7 +34,7 @@ if ($type != "student" and $room > 0){
         if ($stmt->execute(array(':attendee_id' => $id, ':attendee_first_name' => $firstname, ':attendee_last_name' => $lastname, ':attendee_type' => $type, ':rate' => $rate, ':email' => $email, ':phone' => $phone))) {
 		    header('Location: '.$_SERVER['REQUEST_URI']);        
         } else {
-            echo 'Failed';
+            print_r($stmt->errorInfo());
         }
     } catch (PDOException $e) {
         echo "Error";
