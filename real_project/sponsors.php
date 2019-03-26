@@ -1,6 +1,7 @@
 <?php
 include("nav.php");
 ?>
+<div class="wrapper">
 <h2>Sponsors</h2>
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 <table>
@@ -19,8 +20,8 @@ include("nav.php");
     <tr>
         <td><?php echo $sponsor["company_name"]; ?></td>
 		<td><?php echo $sponsor["grade"]; ?></td>
-		<td><button type="submit" name="delete" value="<?php echo $sponsor["company_name"]; ?>">Delete</td>
-		<td><button type="submit" name="show_jobs" value="<?php echo $sponsor["company_name"]; ?>">Show Jobs</td>
+		<td><button class="delete-btn" type="submit" name="delete" value="<?php echo $sponsor["company_name"]; ?>">Delete</td>
+		<td><button class="btn" type="submit" name="show_jobs" value="<?php echo $sponsor["company_name"]; ?>">Show Jobs</td>
     </tr>
  <?php
     }
@@ -28,7 +29,7 @@ include("nav.php");
 </table>
 <div>
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-		<input type="submit" name="show_all" value="Show All Job Postings">
+		<input class='long-btn' type="submit" name="show_all" value="Show All Job Postings">
 	</form>
 <div>
 <div>
@@ -42,7 +43,7 @@ include("nav.php");
 			<option value = 'Silver'>Silver</option>
 			<option value = 'Bronze'>Bronze</option>
 		</select>
-		<input type="submit" name="submit" value="Add">
+		<input class="btn" type="submit" name="submit" value="Add">
 	</form> 
 </div>
 
@@ -128,6 +129,7 @@ include("nav.php");
 	}
 	?>
 	</table>
+</div>
 </div>
 </body>
 </form>

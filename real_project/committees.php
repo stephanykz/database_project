@@ -1,8 +1,8 @@
 <?php
 include("nav.php");
 ?>
+<div class="wrapper">
 <h2>Commitees</h2>
-<ul>
 <?php
 
 echo "<p>Here is the information for all sub-committees!</p>";
@@ -39,7 +39,8 @@ foreach ($stmt as $row) {
         }
     ?>
   </select>
-  <input type="submit">
+  <input class="btn" type="submit">
 </form>
+      </div>
 </body>
 </html> 

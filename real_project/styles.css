@@ -1,0 +1,168 @@
+body {
+    font: 16px sans-serif;
+    line-height: 1.8;
+    color: #1e1e1e;
+    margin: 0;
+}
+
+div {
+    margin: 20px 0;
+}
+
+nav {
+    position: relative;
+    width: 100vw;
+    background-color: #BAB2B5;
+    font-size: 18px;
+    padding: 15px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #3A3A3A;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+
+.wrapper {
+    margin: 50px;
+}
+
+.main-menu {
+    border-bottom-style: solid;
+    border-bottom-width: thick;
+    border-bottom-color: #BAB2B5;
+    font-size: 18px;
+}
+
+.main-menu >ul >li {
+    display: block;
+    width: 100%;
+    padding: 4px;
+    font-size: 24px;
+    border-radius: 6px;
+    background-color: #3A3A3A;
+    border-color: #3A3A3A;
+    border-width: 3px;
+    margin: 10px 0;
+    
+}
+
+.main-menu >ul >li>a {
+    color: #fff;
+    text-align: center;
+}
+
+
+.breakdown {
+    border-bottom-style: solid;
+    border-bottom-width: thick;
+    border-bottom-color: #BAB2B5;
+}
+
+h1 {
+    position: relative;
+    width: 100vw;
+    background-color: #BAB2B5;
+    font-size: 18px;
+    padding: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+li {
+    list-style: none;
+}
+
+.btn {
+    display: block;
+    width: 150px;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: #fff;
+    border-color: #BFD8D2;
+    border-width: 3px;
+}
+
+.long-btn {
+    display: block;
+    width: 550px;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: #fff;
+    border-color: #BFD8D2;
+    border-width: 3px;
+}
+
+.btn:hover {
+    border-color: #376E6F;
+}
+
+.delete-btn {
+    display: block;
+    width: 150px;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: #fff;
+    border-color: #F4DDD4;
+    border-width: 3px;
+}
+
+.big-btn {
+    display: block;
+    width: 300px;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 6px;
+    background-color: #3A3A3A;
+    border-color: #3A3A3A;
+    border-width: 3px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.delete-btn:hover {
+    border-color: #EF9E8C;
+}
+
+input {
+    display:block;
+    border: 1px solid #ccc;
+    width: 482px;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 5px 8px;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    margin: 5px 0;
+}
+
+select {
+    display:block;
+    border: 1px solid #ccc;
+    width: 500px;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 5px 8px;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    margin: 5px 0;
+}
+

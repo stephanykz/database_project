@@ -1,4 +1,8 @@
-
+<?php
+include("nav.php");
+?>
+<div class="wrapper">
+<h2>Conference Schedule</h2>
 <?php
 $sessionDate = $_POST["session_date"];                      
 
@@ -19,3 +23,6 @@ while ($row = $stmt->fetch()) {
 	echo "<tr><td>".$row["session_name"]."</td><td>".$row["session_start_time"]."</td><td>".$row["session_end_time"]."</td><td>".$row["room"]."</td><td>".$row["conference_name"]."</td><td>".$row["speaker_first_name"]."</td><td>".$row["speaker_last_name"]."</td></tr>";
 }
 ?>
+</div>
+</body>
+</html> 
