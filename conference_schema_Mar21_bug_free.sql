@@ -20,22 +20,9 @@ CREATE TABLE Sessions(
 		)ON DELETE CASCADE
 );
 
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Scalable Bayesian Inference', '2019-03-01','10:00:00', '11:00:00', '101', 'QUU Conference', 'Shini', 'Ko');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Visualization for Machine Learning', '2019-03-01', '11:00:00', '12:00:00', '101', 'QUU Conference', 'Yuankang', 'Zhang');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Negative Dependence, Stable Polynomials, and All That', '2019-03-01','10:00:00', '11:00:00', '102', 'QUU Conference', 'Suvrit', 'Jegelka');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Unsupervised Deep Learning', '2019-03-01', '11:00:00', '12:00:00', '102', 'QUU Conference', 'Alex', 'Graves');
-
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Machine Learning in Social Network', '2019-03-01', '14:00:00', '15:00:00', '102', 'QUU Conference', 'Mark', 'Zuckerberg');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Adversarial Robustness: Theory and Practice', '2019-03-01', '14:00:00', '15:00:00', '101', 'QUU Conference', 'Aleksander', 'Madry');
-
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Common Pitfalls for Studying the Human Side of Machine Learning', '2019-03-02','10:00:00', '11:00:00', '101', 'QUU Conference', 'Deirdre', 'Mulligan');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Counterfactual Inference', '2019-03-02', '11:00:00', '12:00:00', '101', 'QUU Conference', 'Susan', 'Athey');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Automatic Machine Learning', '2019-03-02','10:00:00', '11:00:00', '102', 'QUU Conference', 'Frank', 'Hutter');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Statistical Learning Theory: a Hitchhiker Guide', '2019-03-02', '11:00:00', '12:00:00', '102', 'QUU Conference', 'Omar', 'Rivasplata');
-
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Accountability and Algorithmic Bias: Why Diversity and Inclusion Matters', '2019-03-02', '14:00:00', '15:00:00', '102', 'QUU Conference', 'Laura', 'Gomez');
-INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Machine Learning Meets Public Policy: What to Expect and How to Cope', '2019-03-02', '14:00:00', '15:00:00', '101', 'QUU Conference', 'Edward', 'Felten');
-
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Maths', '2019-03-01','10:00:00', '11:00:00', 102, 'QUU Conference', 'Shini', 'Ko');
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Physics', '2019-03-01', '12:00:00', '13:00:00', 102, 'QUU Conference', 'Yuankang', 'Zhang');
+INSERT INTO Sessions(session_name, session_date, session_start_time, session_end_time, room, conference_name, speaker_first_name, speaker_last_name) VALUE('Computer Science', '2019-03-02', '14:00:00', '15:00:00', 102, 'QUU Conference', 'Mark', 'Zuckerberg');
 
 CREATE TABLE Sponsor_company(
 	company_name VARCHAR(50) NOT NULL,
@@ -43,13 +30,17 @@ CREATE TABLE Sponsor_company(
 	email_allowance ENUM('5', '4', '3', '0') NOT NULL,
 	email_sent INTEGER,
 	PRIMARY KEY(
-		company_name,
-		grade,
-email_allowance,
-email_sent
+		company_name
 	)
 );	
 INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('Apple Inc', 'Platinum', '5', 0);
+INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('Queens U', 'Gold', '4', 1);
+INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('TD', 'Gold', '4', 0);
+INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('RBC', 'Silver', '3', 2);
+INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('Fido', 'Bronze', '0', 0);
+
+
+
  
 CREATE TABLE Rooms(
 	room_id VARCHAR(50) NOT NULL,
@@ -59,7 +50,11 @@ CREATE TABLE Rooms(
 		bed_count
 	)
 );
+INSERT INTO Rooms(room_id,bed_count) VALUE('901', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('902', 2);
 INSERT INTO Rooms(room_id,bed_count) VALUE('903', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('904', 2);
+
 
 CREATE TABLE Attendee(
 	attendee_id INTEGER NOT NULL,
@@ -79,7 +74,7 @@ CREATE TABLE Attendee(
 		company_name
 	) REFERENCES Sponsor_company(
 		company_name
-	),
+	) ON DELETE CASCADE,
 	FOREIGN KEY(
 		speak_at
 	) REFERENCES Sessions(
@@ -91,14 +86,14 @@ CREATE TABLE Attendee(
 		room_id
 	)
 );
-
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2001, 'Eric', 'Chu', 'student', '$50', 'eric.chu@queensu.ca', '6137702515', '903');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone) VALUE(2002, 'Kobe', 'James', 'student', '$50', 'kobe.james@queensu.ca', '6137702001');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2002, 'Kobe', 'James', 'student', '$50', 'kobe.james@queensu.ca', '6137702001','903');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', '$100',  'steve.c@gmail.com');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 'FREE', 'steves.j@apple.com', 'Apple Inc');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1001, 'Shini', 'Ko',  'shini.ko@queensu.com', 'Scalable Bayesian Inference');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang',  'yuankang.zhang@queensu.com', 'Visualization for Machine Learning');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg',  'm.z@facebool.com', 'Machine Learning in Social Network');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', '$50', 'shini.ko@queensu.com', 'Maths', "902");
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', '$50', 'yuankang.zhang@queensu.com', 'Physics');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', '$100', 'm.z@facebool.com', 'Computer Science');
+
  
 CREATE TABLE Ads(
 	company_name VARCHAR(100) NOT NULL,
@@ -116,9 +111,14 @@ CREATE TABLE Ads(
 		company_name
 	) REFERENCES Sponsor_company(
 		company_name
-	)
+	) ON DELETE CASCADE
 );
 INSERT INTO Ads(company_name, job_title, location_city, location_province, pay_rate) VALUE('Apple Inc', 'Data Engineer', 'Kingston', 'Ontario', 100000); 
+INSERT INTO Ads(company_name, job_title, location_city, location_province, pay_rate) VALUE('Apple Inc', 'Software Engineer', 'Toronto', 'Ontario', 100000); 
+INSERT INTO Ads(company_name, job_title, location_city, location_province, pay_rate) VALUE('Queens U', 'Professor', 'Kingston', 'Ontario', 100000); 
+INSERT INTO Ads(company_name, job_title, location_city, location_province, pay_rate) VALUE('RBC', 'Analyst', 'Kingston', 'Ontario', 100000); 
+
+
 
 CREATE TABLE Committee(
 	committee_name VARCHAR(100) NOT NULL PRIMARY KEY
@@ -187,4 +187,3 @@ INSERT INTO Sub_committee_members(member_id, sub_committee_name)
 VALUE(9998, 'Registration Committee');
 INSERT INTO Sub_committee_members(member_id, sub_committee_name) 
 VALUE(9997, 'Sponsorship Committee');
-
