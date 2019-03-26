@@ -62,7 +62,7 @@ CREATE TABLE Attendee(
 	attendee_first_name VARCHAR(50) NOT NULL,
 	attendee_last_name VARCHAR(50) NOT NULL,
 	attendee_type ENUM('student', 'professional', 'sponsor'),
-	rate ENUM(50, 100, Free),
+	rate INTEGER,
 	email VARCHAR(100) NOT NULL,
 	phone VARCHAR(100), 
 	company_name  VARCHAR(100),
