@@ -42,6 +42,7 @@ CREATE TABLE Sponsor_company(
 	grade ENUM('Platinum', 'Gold', 'Silver', 'Bronze') NOT NULL,
 	email_allowance ENUM('5', '4', '3', '0') NOT NULL,
 	email_sent INTEGER,
+	rate INTEGER,
 	PRIMARY KEY(
 		company_name,
 		grade,
@@ -49,7 +50,12 @@ email_allowance,
 email_sent
 	)
 );	
-INSERT INTO Sponsor_company(company_name, grade, email_allowance, email_sent) VALUE('Apple Inc', 'Platinum', '5', 0);
+
+INSERT INTO Sponsor_company(company_name, grade, rate, email_allowance, email_sent) VALUE('Apple Inc', 'Platinum', 10000, '5', 0);
+INSERT INTO Sponsor_company(company_name, grade, rate, email_allowance, email_sent) VALUE('Queens U', 'Gold', 5000, '4', 1);
+INSERT INTO Sponsor_company(company_name, grade, rate, email_allowance, email_sent) VALUE('TD', 'Gold', 5000, '4', 0);
+INSERT INTO Sponsor_company(company_name, grade, rate, email_allowance, email_sent) VALUE('RBC', 'Silver', 3000, '3', 2);
+INSERT INTO Sponsor_company(company_name, grade, rate, email_allowance, email_sent) VALUE('Fido', 'Bronze', 1000, '0', 0);
  
 CREATE TABLE Rooms(
 	room_id VARCHAR(50) NOT NULL,
@@ -66,7 +72,7 @@ CREATE TABLE Attendee(
 	attendee_first_name VARCHAR(50) NOT NULL,
 	attendee_last_name VARCHAR(50) NOT NULL,
 	attendee_type ENUM('student', 'professional', 'sponsor'),
-	rate ENUM('$50', '$100', 'Free'),
+	rate INTEGER,
 	email VARCHAR(100) NOT NULL,
 	phone VARCHAR(100), 
 	company_name  VARCHAR(100),
@@ -92,13 +98,14 @@ CREATE TABLE Attendee(
 	)
 );
 
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2001, 'Eric', 'Chu', 'student', '$50', 'eric.chu@queensu.ca', '6137702515', '903');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone) VALUE(2002, 'Kobe', 'James', 'student', '$50', 'kobe.james@queensu.ca', '6137702001');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', '$100',  'steve.c@gmail.com');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 'FREE', 'steves.j@apple.com', 'Apple Inc');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1001, 'Shini', 'Ko',  'shini.ko@queensu.com', 'Scalable Bayesian Inference');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang',  'yuankang.zhang@queensu.com', 'Visualization for Machine Learning');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg',  'm.z@facebool.com', 'Machine Learning in Social Network');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2001, 'Eric', 'Chu', 'student', 50, 'eric.chu@queensu.ca', '6137702515', '903');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2002, 'Kobe', 'James', 'student', 50, 'kobe.james@queensu.ca', '6137702001','903');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', 100,  'steve.c@gmail.com');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 0, 'steves.j@apple.com', 'Apple Inc');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', 50, 'shini.ko@queensu.com', 'Maths', "902");
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', 50, 'yuankang.zhang@queensu.com', 'Physics');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', 100, 'm.z@facebool.com', 'Computer Science');
+
  
 CREATE TABLE Ads(
 	company_name VARCHAR(100) NOT NULL,

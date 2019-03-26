@@ -57,13 +57,14 @@ include("nav.php");
 			$sponsors = $pdo->prepare($sponsors_sql);
 			$sponsors->execute(); 
 			echo "Deleted";
-			// TODO: Update the table after delete
+			header('Location: '.$_SERVER['REQUEST_URI']);
 		} catch (PDOException $e) {
 			echo "Error";
 		}
 	}
 	if(isset($_POST["submit"])){
 		include("add_sponsor.php");
+		header('Location: '.$_SERVER['REQUEST_URI']);
 	}
 	if(!empty($_POST["show_all"])){
 		$pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");

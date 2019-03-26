@@ -32,7 +32,7 @@ if ($type != "student" and $room > 0){
         values(:attendee_id, :attendee_first_name, :attendee_last_name, :attendee_type, :rate, :phone, :phone)";
         $stmt = $pdo->prepare($sql);
         if ($stmt->execute(array(':attendee_id' => $id, ':attendee_first_name' => $firstname, ':attendee_last_name' => $lastname, ':attendee_type' => $type, ':rate' => $rate, ':email' => $email, ':phone' => $phone))) {
-            echo "Added";
+		    header('Location: '.$_SERVER['REQUEST_URI']);        
         } else {
             echo 'Failed';
         }
@@ -43,17 +43,27 @@ if ($type != "student" and $room > 0){
 else {
     try {
         $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
-        $sql = "Insert into Attendee (attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone)
-        values(:attendee_id, :attendee_first_name, :attendee_last_name, :attendee_type, :rate, :email, :phone)";
+        
         if ($room > 0){
             $sql = "Insert into Attendee (attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in)
-        values(:attendee_id, :attendee_first_name, :attendee_last_name, :attendee_type, :rate, :email, :phone, :live_in)";
+            values(:attendee_id, :attendee_first_name, :attendee_last_name, :attendee_type, :rate, :email, :phone, :live_in)";
+            $stmt = $pdo->prepare($sql);
+            if ($stmt->execute(array(':attendee_id' => $id, ':attendee_first_name' => $firstname, ':attendee_last_name' => $lastname, ':attendee_type' => $type, ':rate' => $rate, ':email' => $email, ':phone' => $phone, ':live_in' => $room))) {
+                header('Location: '.$_SERVER['REQUEST_URI']);                    
+            } else {
+                print_r($stmt->errorInfo());
+            }
         }
-        $stmt = $pdo->prepare($sql);
-        if ($stmt->execute(array(':attendee_id' => $id, ':attendee_first_name' => $firstname, ':attendee_last_name' => $lastname, ':attendee_type' => $type, ':rate' => $rate, ':email' => $email, ':phone' => $phone, ':live_in' => $room))) {
-            echo "Added";
-        } else {
-            print_r($stmt->errorInfo());
+
+        else {
+            $sql = "Insert into Attendee (attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone)
+            values(:attendee_id, :attendee_first_name, :attendee_last_name, :attendee_type, :rate, :email, :phone)";
+            $stmt = $pdo->prepare($sql);
+            if ($stmt->execute(array(':attendee_id' => $id, ':attendee_first_name' => $firstname, ':attendee_last_name' => $lastname, ':attendee_type' => $type, ':rate' => $rate, ':email' => $email, ':phone' => $phone))) {
+                header('Location: '.$_SERVER['REQUEST_URI']);                    
+            } else {
+                print_r($stmt->errorInfo());
+            }
         }
     } catch (PDOException $e) {
         echo "Error";
