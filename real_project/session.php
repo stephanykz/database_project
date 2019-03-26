@@ -11,7 +11,7 @@ include("nav.php");
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
 
-$session_sql = "Select * from Sessions";
+$session_sql = "Select * from Sessions ORDER BY session_date, session_start_time;";
 $sessions = $pdo->prepare($session_sql);
 $sessions->execute(); 
 
@@ -54,7 +54,7 @@ foreach($sessions as $session){
     	<select name='session_target_date'>
     		<option value = '0' selected = 'selected'>Switch to date</option>
 		    <?php
-		    	$session_date_sql = "Select DISTINCT session_date from Sessions";
+		    	$session_date_sql = "Select DISTINCT session_date from Sessions ORDER BY session_date";
 		    	$sessionsTargetDates = $pdo->prepare($session_date_sql);
 		    	$sessionsTargetDates->execute();
 		    	foreach($sessionsTargetDates as $sessionsTargetDate){
@@ -69,7 +69,7 @@ foreach($sessions as $session){
   		<select name='session_target_time'>
     		<option value = "0" selected = 'selected'>Switch to start time</option>
 		    <?php
-		    	$session_time_sql = "Select DISTINCT session_start_time from Sessions";
+		    	$session_time_sql = "Select DISTINCT session_start_time from Sessions ORDER BY session_start_time";
 		    	$sessionsTargetTimes = $pdo->prepare($session_time_sql);
 		    	$sessionsTargetTimes->execute();
 		    	foreach($sessionsTargetTimes as $sessionsTargetTime){
@@ -85,7 +85,7 @@ foreach($sessions as $session){
     		<option value = "0" selected = 'selected'>Switch to room</option>
 		    <?php
 		    	$pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
-		    	$session_loc_sql = "Select DISTINCT room from Sessions";
+		    	$session_loc_sql = "Select DISTINCT room from Sessions ORDER BY room";
 		    	$sessionsTargetLocations = $pdo->prepare($session_loc_sql);
 		    	$sessionsTargetLocations->execute();
 		    	foreach($sessionsTargetLocations as $sessionsTargetLocation){
@@ -95,13 +95,19 @@ foreach($sessions as $session){
 		        }
 		    ?>
   		</select>
-  		<input type="submit" name="switch" value="Update">
+  		<input type="submit" name="switch" value="Update"> 
   		</form>
   		
 <?php
     if (isset($_POST['switch'])){
     	include('updateSession.php');
-			}
+    	$new_location = "http://localhost:8080/real_project/session.php";
+    	function page_refresh($location){
+   		echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$location.'">';
+   		exit; 
+ 		}
+ 		page_refresh($new_location);
+	}
 ?>
 
 
