@@ -33,6 +33,6 @@ $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
 						  WHERE session_name = '".$switch_session."';";
 	$switchs4 = $pdo->prepare($switchsql4);  
 	$switchs4->execute();
-		
-		
+	echo "updated";
+	// header('Location: '.$_SERVER['REQUEST_URI']);
 ?>

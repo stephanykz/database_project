@@ -1,8 +1,8 @@
 <?php
 include("nav.php");
 ?>
+<div class="wrapper">
 <h2>Conference Schedule</h2>
-<ul>
 
 <p>Here is the complete conference schedule!</p>
 
@@ -95,13 +95,13 @@ foreach($sessions as $session){
 		        }
 		    ?>
   		</select>
-  		<input type="submit" name="switch" value="Update">
+  		<input class="btn" type="submit" name="switch" value="Update">
   		</form>
   		
 <?php
     if (isset($_POST['switch'])){
-    	include('updateSession.php');
-			}
+		include('updateSession.php');
+		}
 ?>
 
 
@@ -122,9 +122,9 @@ foreach($sessions as $session){
         }
     ?>
   </select>
-  <input type="submit">
+  <input class="btn" type="submit" value="View">
 </form>
-
+	</div>
 </body>
 </html> 
 

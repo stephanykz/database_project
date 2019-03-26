@@ -65,7 +65,10 @@ CREATE TABLE Rooms(
 		bed_count
 	)
 );
+INSERT INTO Rooms(room_id,bed_count) VALUE('904', 2);
 INSERT INTO Rooms(room_id,bed_count) VALUE('903', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('902', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('901', 2);
 
 CREATE TABLE Attendee(
 	attendee_id INTEGER NOT NULL,
@@ -102,9 +105,9 @@ INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, atten
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2002, 'Kobe', 'James', 'student', 50, 'kobe.james@queensu.ca', '6137702001','903');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', 100,  'steve.c@gmail.com');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 0, 'steves.j@apple.com', 'Apple Inc');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', 50, 'shini.ko@queensu.com', 'Maths', "902");
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', 50, 'yuankang.zhang@queensu.com', 'Physics');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', 100, 'm.z@facebool.com', 'Computer Science');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', 50, 'shini.ko@queensu.com', 'Scalable Bayesian Inference', "902");
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', 50, 'yuankang.zhang@queensu.com', 'Visualization for Machine Learning');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', 100, 'm.z@facebool.com', 'Machine Learning in Social Network');
 
  
 CREATE TABLE Ads(
@@ -194,4 +197,3 @@ INSERT INTO Sub_committee_members(member_id, sub_committee_name)
 VALUE(9998, 'Registration Committee');
 INSERT INTO Sub_committee_members(member_id, sub_committee_name) 
 VALUE(9997, 'Sponsorship Committee');
-
