@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link href="styles.css" type="text/css" rel="stylesheet" >
-</head>
-<body>
+<?php
+include("nav.php");
+?>
 <h2>Attendees</h2>
 <?php
         $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
