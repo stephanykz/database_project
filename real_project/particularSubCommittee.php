@@ -1,4 +1,9 @@
 <?php
+include("nav.php");
+?>
+<div class="wrapper">
+
+<?php
 $subcommitteeName = $_POST["sub_committee_name"];                      
 
 echo "<p>Here is a list of all the members at $subcommitteeName!</p>";
@@ -19,3 +24,4 @@ while ($row = $stmt->fetch()) {
 }
 
 ?>
+</div>

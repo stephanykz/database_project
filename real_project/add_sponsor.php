@@ -14,18 +14,21 @@ switch ($grade) {
         $email_allowance = '3';  
         $rate = 3000;
         break;
+    case "Silver":
+        $email_allowance = '0';
+        $rate = 1000;
     default:
         $email_allowance = '0';
         $rate = 1000;
-
 }
 $email_sent = 0;
+echo $grade;
+echo $rate;
 
 try {
     $pdo = new PDO('mysql:host=localhost;dbname=conference', "root", "");
-    $stmt = $pdo->prepare("Insert into Sponsor_company values(:company_name, :grade, :rate, :email_allowance,:email_sent)");
-      if ($stmt->execute(array(':company_name' => $company_name, ':grade' => $grade, ':rate' => $rate, ':email_allowance'=> $email_allowance,':email_sent'=>$email_sent))) {
-            echo "Added";
+    $stmt = $pdo->prepare("Insert into Sponsor_company values(:company_name, :grade, :email_allowance, :email_sent, :rate)");
+      if ($stmt->execute(array(':company_name' => $company_name, ':grade' => $grade, ':email_allowance'=> $email_allowance,':email_sent'=>$email_sent, ':rate' => $rate))) {
             header('Location: '.$_SERVER['REQUEST_URI']);                    
             } else {
             echo 'Failed';

@@ -197,4 +197,3 @@ INSERT INTO Sub_committee_members(member_id, sub_committee_name)
 VALUE(9998, 'Registration Committee');
 INSERT INTO Sub_committee_members(member_id, sub_committee_name) 
 VALUE(9997, 'Sponsorship Committee');
-

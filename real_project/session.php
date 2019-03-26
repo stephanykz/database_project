@@ -1,8 +1,8 @@
 <?php
 include("nav.php");
 ?>
+<div class="wrapper">
 <h2>Conference Schedule</h2>
-<ul>
 
 <p>Here is the complete conference schedule!</p>
 
@@ -95,7 +95,8 @@ foreach($sessions as $session){
 		        }
 		    ?>
   		</select>
-  		<input type="submit" name="switch" value="Update"> 
+
+  		<input class="btn" type="submit" name="switch" value="Update">
   		</form>
   		
 <?php
@@ -105,9 +106,9 @@ foreach($sessions as $session){
     	function page_refresh($location){
    		echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$location.'">';
    		exit; 
- 		}
- 		page_refresh($new_location);
-	}
+ 		  }
+ 		  page_refresh($new_location);
+	  }
 ?>
 
 
@@ -128,9 +129,9 @@ foreach($sessions as $session){
         }
     ?>
   </select>
-  <input type="submit">
+  <input class="btn" type="submit" value="View">
 </form>
-
+	</div>
 </body>
 </html> 
 
