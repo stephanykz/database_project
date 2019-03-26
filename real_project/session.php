@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link href="styles.css" type="text/css" rel="stylesheet" >
-</head>
-<body>
+<?php
+include("nav.php");
+?>
 <h2>Conference Schedule</h2>
 <ul>
 
