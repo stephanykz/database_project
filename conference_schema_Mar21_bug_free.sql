@@ -102,9 +102,9 @@ INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, atten
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, phone, live_in) VALUE(2002, 'Kobe', 'James', 'student', 50, 'kobe.james@queensu.ca', '6137702001','903');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email) VALUE(3001, 'Steve', 'Curry', 'professional', 100,  'steve.c@gmail.com');
 INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, company_name) VALUE(4001, 'Steves', 'Jobs', 'sponsor', 0, 'steves.j@apple.com', 'Apple Inc');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', 50, 'shini.ko@queensu.com', 'Maths', "902");
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', 50, 'yuankang.zhang@queensu.com', 'Physics');
-INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', 100, 'm.z@facebool.com', 'Computer Science');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at, live_in) VALUE(1001, 'Shini', 'Ko', 'student', 50, 'shini.ko@queensu.com', 'Scalable Bayesian Inference', "902");
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1002, 'Yuankang', 'Zhang', 'student', 50, 'yuankang.zhang@queensu.com', 'Visualization for Machine Learning');
+INSERT INTO Attendee(attendee_id, attendee_first_name, attendee_last_name, attendee_type, rate, email, speak_at) VALUE(1003, 'Mark', 'Zuckerberg', 'professional', 100, 'm.z@facebool.com', 'Machine Learning in Social Network');
 
  
 CREATE TABLE Ads(
