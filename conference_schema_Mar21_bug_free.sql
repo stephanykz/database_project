@@ -65,7 +65,10 @@ CREATE TABLE Rooms(
 		bed_count
 	)
 );
+INSERT INTO Rooms(room_id,bed_count) VALUE('904', 2);
 INSERT INTO Rooms(room_id,bed_count) VALUE('903', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('902', 2);
+INSERT INTO Rooms(room_id,bed_count) VALUE('901', 2);
 
 CREATE TABLE Attendee(
 	attendee_id INTEGER NOT NULL,
